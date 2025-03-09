@@ -1,7 +1,7 @@
 {
-  "name": "base-vite-vue-ts-eslint-husky",
-  "version": "1.0.0",
-  "description": "vite+vue+ts+less+eslint+husky基础环境",
+  "name": "@poohou/drag-element",
+  "version": "0.0.1",
+  "description": "拖拽元素位置",
   "main": "dist/index.es.js",
   "module": "dist/index.es.js",
   "typings": "dist/lib/index.d.ts",
@@ -22,7 +22,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://gitee.com/xxiaomao/base-vite-vue-ts-eslint-husky.git"
+    "url": "https://github.com/cdxxiaomao/drag-element.git"
   },
   "keywords": [],
   "author": "",

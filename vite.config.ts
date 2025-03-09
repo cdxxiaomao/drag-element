@@ -8,6 +8,9 @@ export default defineConfig({
     vue(),
     dts()
   ],
+  server: {
+    port: 5177
+  },
   build: {
     lib: {
       entry: path.resolve(__dirname, 'lib/index.ts'),
