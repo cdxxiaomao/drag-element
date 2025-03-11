@@ -15,7 +15,7 @@ interface DragConfig {
 
 /**
  * 拖拽元素位置
- * @param element 许愿移动位置的元素
+ * @param element 拖拽移动位置的元素
  * @param config 可选项
  */
 export function dragElement (element: string | Element, config: DragConfig = {}): () => void {
@@ -24,7 +24,7 @@ export function dragElement (element: string | Element, config: DragConfig = {})
 
   const {
     handle = el,
-    reference = 'parent',
+    reference = 'window',
     useVirtual = false
   } = config
 
