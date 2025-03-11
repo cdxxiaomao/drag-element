@@ -42,6 +42,10 @@ export function dragElement (element: string | Element, config: DragConfig = {})
   // 根据 reference 设置定位方式
   const setPositionStyle = () => {
     if (reference === 'parent') {
+      const parent = el.parentElement
+      if (parent && window.getComputedStyle(parent).position === 'static') {
+        parent.style.position = 'relative' // 如果父级没有配置 position，则自动加上 relative
+      }
       el.style.position = 'absolute'
     } else {
       el.style.position = 'fixed'
