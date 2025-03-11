@@ -1,58 +1,42 @@
-# base-vite-vue-ts-eslint-husky
+# @poohou/drag-element
 
 #### 介绍
-插件开发环境，集成文档、版本发布，自动生成更新日志
+拖拽元素位置
 
-#### 前期准备
-1. 修改包名称 `package.json` 的 `name`
-2. 修改umd全局变量名 `vite.config.ts` 的 `build.lib.name`
-
-软件架构
-
-* [Vite](https://cn.vitejs.dev/)
-* [Typescript](https://webpack.docschina.org/)
-* [Less](https://lesscss.org/)
-* [Eslint](https://eslint.org/)
-* [Husky](https://typicode.github.io/husky/)
+![Kapture 2025-03-11 at 22.31.19](https://txt-01.oss-cn-chengdu.aliyuncs.com/typora/lyra/Kapture%202025-03-11%20at%2022.31.19.gif)
 
 
-#### 安装教程
+## 使用方法
+```html
+<div
+  id="draggable1"
+  style="width: 100px; height: 100px; border: 1px solid #ccc;"
+/>
 
-1. 安装依赖
+<script>
+import { dragElement } from '@poohou/drag-element'
+  
+const uninstall = dragElement('#draggable1', {})
+// 销毁方法
+// uninstall()
+</script>
+```
+## 参数
+```typescript
+dragElement<HTMLElement | string, Options>
+```
 
-   ```sh
-   # npm
-   npm install
-   ```
+## Options
 
-   推荐pnpm
-
-   ```sh
-   pnpm install
-   ```
-
-2. 运行
-
-   ```sh
-   npm run serve
-   ```
-
-3. 打包插件
-
-   ```sh
-   npm run build
-   ```
-   
-4. 发布版本
-   ```shell
-   npm run release-tag
-   ```
-
-5. 推送npm
+|  参数 | 默认值                                | 可选项/类型                                                                                        | 描述       |
+|---|------------------------------------|-----------------------------------------------------------------------------------------------|----------|
+| reference  | `window` | `window \| parent`                           | 拖拽参考点，window：浏览器窗口，parent：父级 |
+| useVirtual | `false`  | 'true'                                       | 是否开启移动时虚拟效果。                                     |
+| handle     | -        | `string \|Element \|Array<string \|Element>` | 拖拽点配置，支持多个拖拽节点数组。配置后则主节点不可拖动     |
 
 
-#### 注意事项
+## Methods
 
-1. 因为使用了husky验证，在提交不上的情况下，一般注意以下原因：
-   1. 提交描述不正确，注意比如: "feat: 新增项目管理模块"，"feat: "冒号后面需要有一个半角空格。
-   2. eslint验证不通过，可先在对应的提交文件，使用eslint修复文件再提交。
+| 方法名 | 参数 | 描述   |
+|-----|----|------|
+|   uninstall  | -  | 销毁 |
