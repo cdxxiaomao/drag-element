@@ -1,5 +1,5 @@
 {
-  "name": "@poohou/drag-element",
+  "name": "poohou-drag-element",
   "version": "0.0.2",
   "description": "拖拽元素位置",
   "main": "dist/index.es.js",
