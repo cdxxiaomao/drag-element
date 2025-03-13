@@ -81,6 +81,17 @@ export function dragElement (element: string | Element, config: DragConfig = {})
     }
   }
 
+  // 获取元素的实际偏移量，考虑 transform 属性
+  const getActualOffset = (element: HTMLElement) => {
+    const style = window.getComputedStyle(element)
+    const matrix = new DOMMatrixReadOnly(style.transform)
+    const rect = element.getBoundingClientRect()
+    return {
+      left: rect.left - matrix.m41,
+      top: rect.top - matrix.m42
+    }
+  }
+
   // 创建虚拟元素
   // 创建虚拟元素
   const createVirtualElement = () => {
@@ -119,19 +130,21 @@ export function dragElement (element: string | Element, config: DragConfig = {})
 
     const rect = el.getBoundingClientRect()
 
-    // 计算初始位置
+    // 计算初始位置，考虑 transform 属性
     startX = e.clientX
     startY = e.clientY
 
     if (reference === 'parent') {
       // 父级模式下，计算相对于父级的偏移量
       const parentRect = el.offsetParent?.getBoundingClientRect() || { left: 0, top: 0 }
-      initialX = rect.left - parentRect.left
-      initialY = rect.top - parentRect.top
+      const actualOffset = getActualOffset(el)
+      initialX = actualOffset.left - parentRect.left
+      initialY = actualOffset.top - parentRect.top
     } else {
       // 视窗模式下，直接使用 clientX/clientY
-      initialX = rect.left
-      initialY = rect.top
+      const actualOffset = getActualOffset(el)
+      initialX = actualOffset.left
+      initialY = actualOffset.top
     }
 
     if (useVirtual) {
