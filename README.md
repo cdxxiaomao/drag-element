@@ -14,7 +14,7 @@
 />
 
 <script>
-import { dragElement } from '@poohou/drag-element'
+import { dragElement } from 'poohou-drag-element'
   
 const uninstall = dragElement('#draggable1', {})
 // 销毁方法
