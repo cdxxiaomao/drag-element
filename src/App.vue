@@ -28,7 +28,16 @@ onMounted(() => {
   dragElement('#draggable', {
     reference: 'window',
     // reference: 'parent',
-    handle: ['#handle', '#handle1']
+    handle: ['#handle', '#handle1'],
+    onDragStart () {
+      console.log('onDragStart')
+    },
+    onDrag () {
+      console.log('onDrag')
+    },
+    onDragEnd () {
+      console.log('onDragEnd')
+    }
     // useVirtual: true
   })
 })
