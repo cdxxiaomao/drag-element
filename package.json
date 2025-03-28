@@ -13,7 +13,7 @@
     "release-minor": "standard-version --release-as minor",
     "release-patch": "standard-version --release-as patch",
     "lib:publish": "node publish.js",
-    "release-tag": "node build/release.js && npm run lib:publish",
+    "release-tag": "npm run build && node build/release.js && npm run lib:publish",
     "prepare": "husky install",
     "copy-changelog": "node ./build/copyChangelog.js",
     "docs:dev": "vitepress dev docs",
