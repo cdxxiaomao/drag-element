@@ -11,6 +11,18 @@ interface DragConfig {
    * 是否展示虚拟位置,拖动结束才实际移动位置
    */
   useVirtual?: boolean
+  /**
+   * 拖拽开始前的回调
+   */
+  onDragStart?: () => void
+  /**
+   * 拖拽中的回调
+   */
+  onDrag?: () => void
+  /**
+   * 拖拽结束后的回调
+   */
+  onDragEnd?: () => void
 }
 
 /**
@@ -25,7 +37,10 @@ export function dragElement (element: string | Element, config: DragConfig = {})
   const {
     handle = el,
     reference = 'window',
-    useVirtual = false
+    useVirtual = false,
+    onDragStart,
+    onDrag,
+    onDragEnd
   } = config
 
   // 获取所有 handle 元素
@@ -128,6 +143,11 @@ export function dragElement (element: string | Element, config: DragConfig = {})
     e.preventDefault()
     isDragging = true
 
+    // 触发拖拽开始事件
+    if (onDragStart) {
+      onDragStart()
+    }
+
     const rect = el.getBoundingClientRect()
 
     // 计算初始位置，考虑 transform 属性
@@ -159,6 +179,11 @@ export function dragElement (element: string | Element, config: DragConfig = {})
   const onMouseMove = (e: MouseEvent): void => {
     if (!isDragging) return
 
+    // 触发拖拽中事件
+    if (onDrag) {
+      onDrag()
+    }
+
     const boundaries = getBoundaries()
     const deltaX = e.clientX - startX
     const deltaY = e.clientY - startY
@@ -183,6 +208,11 @@ export function dragElement (element: string | Element, config: DragConfig = {})
   const onMouseUp = (): void => {
     if (!isDragging) return
     isDragging = false
+
+    // 触发拖拽结束事件
+    if (onDragEnd) {
+      onDragEnd()
+    }
 
     // 同步到真实元素
     if (useVirtual && virtualEl) {
