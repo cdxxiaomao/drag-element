@@ -1,10 +1,16 @@
-# @poohou/drag-element
+# poohou-drag-element
 
 #### 介绍
 拖拽元素位置
 
 ![Kapture 2025-03-11 at 22.31.19](https://txt-01.oss-cn-chengdu.aliyuncs.com/typora/lyra/Kapture%202025-03-11%20at%2022.31.19.gif)
 
+## 安装方式
+```shell
+npm install poohou-drag-element
+# OR
+pnpm add poohou-drag-element
+```
 
 ## 使用方法
 ```html
