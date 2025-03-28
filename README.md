@@ -31,8 +31,11 @@ dragElement<HTMLElement | string, Options>
 |  参数 | 默认值                                | 可选项/类型                                                                                        | 描述       |
 |---|------------------------------------|-----------------------------------------------------------------------------------------------|----------|
 | reference  | `window` | `window \| parent`                           | 拖拽参考点，window：浏览器窗口，parent：父级 |
-| useVirtual | `false`  | 'true'                                       | 是否开启移动时虚拟效果。                                     |
+| useVirtual | `false`  | `true`                                   | 是否开启移动时虚拟效果。                                     |
 | handle     | -        | `string \|Element \|Array<string \|Element>` | 拖拽点配置，支持多个拖拽节点数组。配置后则主节点不可拖动     |
+| onDragStart | - | `() => void` | 拖拽开始前的回调 |
+| onDrag | - | `() => void` | 拖拽中的回调 |
+| onDragEnd | - | `() => void` | 拖拽结束后的回调 |
 
 
 ## Methods
